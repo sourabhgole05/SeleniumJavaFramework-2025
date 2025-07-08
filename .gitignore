@@ -152,3 +152,32 @@ local.properties
 .pydevproject
 .texlipse
 *_flymake.*
+
+
+# -------------------------------
+# Custom Additions for Test Artifacts
+# -------------------------------
+
+# TestNG & ExtentReports test outputs
+test-output/
+
+# Reports generated during automation runs
+reports/
+screenshots/
+
+# Allure results (if used)
+allure-results/
+allure-report/
+
+# Logs and temporary runtime files
+*.log
+*.tmp
+*.bak
+
+# VSCode and IntelliJ folders (if missing)
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db

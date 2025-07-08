@@ -3,31 +3,32 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import utils.Log;
-
-public class LoginPage {
+public class OrangeHRMLoginTest {
 
 	private WebDriver driver;
 
-	By userNameTextBox = By.id("Email");
-	By passwordTextBox = By.id("Password");
+	By usernameORG = By.name("username");
+	By passwordORG = By.name("password");
+
 	By loginBtn = By.xpath("//button[@type='submit']");
 
-	public LoginPage(WebDriver driver) {
+	public OrangeHRMLoginTest(WebDriver driver) {
 		this.driver = driver;
-	}
+		}
 
 	public void enterUserName(String username) {
-		driver.findElement(userNameTextBox).sendKeys(username);
-	}
+
+		driver.findElement(usernameORG).sendKeys(username);
+		}
 
 	public void enterPassword(String password) {
-		driver.findElement(passwordTextBox).sendKeys(password);
-	}
+
+		driver.findElement(passwordORG).sendKeys(password);
+		}
 
 	public void clickLogin() {
-		Log.info("Clicking Login button..");
+
 		driver.findElement(loginBtn).click();
-	}
+		}
 
 }
