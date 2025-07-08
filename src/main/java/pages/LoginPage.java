@@ -18,10 +18,12 @@ public class LoginPage {
 	}
 
 	public void enterUserName(String username) {
+		driver.findElement(userNameTextBox).clear();
 		driver.findElement(userNameTextBox).sendKeys(username);
 	}
 
 	public void enterPassword(String password) {
+		driver.findElement(passwordTextBox).clear();
 		driver.findElement(passwordTextBox).sendKeys(password);
 	}
 
