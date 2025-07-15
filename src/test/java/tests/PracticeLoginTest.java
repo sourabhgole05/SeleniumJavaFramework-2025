@@ -35,6 +35,7 @@ public class PracticeLoginTest extends BaseTest {
 		
 		if (actulUrl.contains(expectedUrl)) {
 			
+			test.info("validate url checks");
 		 Assert.assertTrue(true);
 			
 		}
