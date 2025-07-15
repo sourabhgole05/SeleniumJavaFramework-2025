@@ -42,7 +42,8 @@ public class BaseTest {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		Log.info("Navigating to URL.....");
-		driver.get("https://admin-demo.nopcommerce.com/login");
+		//driver.get("https://admin-demo.nopcommerce.com/login");
+		driver.get("https://practicetestautomation.com/practice-test-login/");
 	}
 
 	@AfterMethod
@@ -50,7 +51,7 @@ public class BaseTest {
 
 		if (result.getStatus()== ITestResult.FAILURE) {
 			
-			String screenshotPath = ExtentReportManager.captureSreeenshot(driver, "LoginFailure");
+			String screenshotPath = ExtentReportManager.captureScreenshot(driver, "LoginFailure");
 			test.fail("Test Failed....Check Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotPath).build());
 		}
 		

@@ -41,7 +41,7 @@ public class ExtentReportManager {
 
 	}
 
-	public static String captureSreeenshot(WebDriver driver, String screenshotName) {
+	public static String captureScreenshot(WebDriver driver, String screenshotName) {
 
 		try {
 
