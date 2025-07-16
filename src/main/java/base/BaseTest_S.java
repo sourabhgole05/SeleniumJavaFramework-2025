@@ -62,7 +62,7 @@ public class BaseTest_S {
         threadLocalDriver.set(driver);
         
         // Navigate to URL from properties file
-        String url = config.getString("base.url");
+        String url = config.getProperty("base.url");
         if (url != null && !url.isEmpty()) {
             driver.get(url);
         } else {

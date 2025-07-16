@@ -18,6 +18,9 @@ public class PracticeLoginPage {
 
 	@FindBy(xpath = "//button[@id='submit']")
 	WebElement submitBtn;
+	
+	@FindBy(linkText = "Log out")
+	WebElement logoutBtn;
 
 	public PracticeLoginPage(WebDriver driver) {
 		this.driver = driver;
@@ -36,6 +39,10 @@ public class PracticeLoginPage {
 
 	public void clickSubmitBtn() {
 		submitBtn.click();
+	}
+	
+	public boolean isLogoutBtnDisplay() {
+			return logoutBtn.isDisplayed();
 	}
 
 }
