@@ -14,8 +14,9 @@ public class LoginTest extends BaseTest {
 	public void testValidLogin() throws InterruptedException {
 
 		Log.info("Starting Login test.....");
-		test = ExtentReportManager.creatTest("Login Test");
+		//test = ExtentReportManager.creatTest("Login Test");
 
+		test = extent.createTest("Login Test", "Verify user can login with valid credentials");
 		test.info("Navigating url....");
 		LoginPage loginPage = new LoginPage(driver);
 
@@ -40,8 +41,8 @@ public class LoginTest extends BaseTest {
 	public void testInvalidLogin() throws InterruptedException {
 
 		Log.info("Starting Login test.....");
-		test = ExtentReportManager.creatTest("Login Test");
-
+		//test = ExtentReportManager.creatTest("Login Test");
+		test = extent.createTest("Login Test", "Verify user can login with valid credentials");
 		test.info("Navigating url....");
 		LoginPage loginPage = new LoginPage(driver);
 

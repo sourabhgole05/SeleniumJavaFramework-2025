@@ -1,5 +1,6 @@
 package base;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
@@ -46,20 +47,17 @@ public class BaseTest {
 		driver.get("https://practicetestautomation.com/practice-test-login/");
 	}
 
-	@AfterMethod
-	public void tearDown(ITestResult result) {
-
-		if (result.getStatus()== ITestResult.FAILURE) {
-			
-			String screenshotPath = ExtentReportManager.captureScreenshot(driver, "LoginFailure");
-			test.fail("Test Failed....Check Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotPath).build());
-		}
-		
-		
-		if (driver != null) {
-			Log.info("Closing Browser.....");
-			driver.quit();
-		}
-	}
-
+	/*
+	 * @AfterMethod public void tearDown(ITestResult result) {
+	 * 
+	 * if (result.getStatus()== ITestResult.FAILURE) {
+	 * 
+	 * String screenshotPath = ExtentReportManager.captureScreenshot(driver,
+	 * "LoginFailure"); test.fail("Test Failed....Check Screenshot",
+	 * MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotPath).build(
+	 * )); }
+	 * 
+	 * 
+	 * if (driver != null) { Log.info("Closing Browser....."); driver.quit(); } }
+	 */
 }
