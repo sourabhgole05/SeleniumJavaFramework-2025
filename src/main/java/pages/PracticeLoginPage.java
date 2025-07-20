@@ -21,6 +21,9 @@ public class PracticeLoginPage {
 	
 	@FindBy(linkText = "Log out")
 	WebElement logoutBtn;
+	
+	@FindBy(id = "error")
+	WebElement errorLoginMsg;
 
 	public PracticeLoginPage(WebDriver driver) {
 		this.driver = driver;
@@ -43,6 +46,11 @@ public class PracticeLoginPage {
 	
 	public boolean isLogoutBtnDisplay() {
 			return logoutBtn.isDisplayed();
+	}
+	
+	public boolean isLoginErrorMsgDisplay() {
+		
+		return errorLoginMsg.isDisplayed();
 	}
 
 }

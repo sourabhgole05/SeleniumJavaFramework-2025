@@ -8,7 +8,7 @@ import pages.PracticeLoginPage;
 import utils.ConfigManager;
 import utils.Log;
 
-public class PracticeLoginTest extends BaseTest_S {
+public class NegativeLoginTest2 extends BaseTest_S {
 
 	@Test
 	public void validLoginTest() {
@@ -16,7 +16,7 @@ public class PracticeLoginTest extends BaseTest_S {
 		ConfigManager config = ConfigManager.getInstance();
 
 		// Get values from config
-		String username = config.getProperty("valid.username");
+		String username = config.getProperty("invalid.username");
 		String password = config.getProperty("valid.password");
 
 		Log.info("Starting Login test.....");
@@ -39,24 +39,27 @@ public class PracticeLoginTest extends BaseTest_S {
 		loginPage.clickSubmitBtn();
 		Log.info("Click to Submit ");
 
-		String expectedUrl = "practicetestautomation.com/logged-in-successfully/";
-		String actualUrl = driver.getCurrentUrl();
+		
+		Assert.assertTrue(loginPage.isLoginErrorMsgDisplay(), "Login error msg is not displaying....Entered username correctly !!!"); 
+		
+//		String expectedUrl = "practicetestautomation.com/logged-in-successfully/";
+//		String actualUrl = driver.getCurrentUrl();
 
 		// Log the actual URL
-		test.info("Actual URL is: " + actualUrl);
-		test.info("Expected URL should contain: " + expectedUrl);
+//		test.info("Actual URL is: " + actualUrl);
+//		test.info("Expected URL should contain: " + expectedUrl);
 
 		// Validation with assert and fallback log
-		try {
-			Assert.assertTrue(actualUrl.contains(expectedUrl),
-					"URL Mismatch: expected to contain '" + expectedUrl + "', but got '" + actualUrl + "'");
-			test.pass("✅ URL validation passed.");
+//		try {
+//			Assert.assertTrue(actualUrl.contains(expectedUrl),
+//					"URL Mismatch: expected to contain '" + expectedUrl + "', but got '" + actualUrl + "'");
+//			test.pass("✅ URL validation passed.");
 
-		} catch (AssertionError e) {
-			test.fail("❌ URL validation failed. Details: " + e.getMessage());
-			throw e;
-		}
+//		} catch (AssertionError e) {
+//			test.fail("❌ URL validation failed. Details: " + e.getMessage());
+//			throw e;
+//		}
 
-		Assert.assertTrue(loginPage.isLogoutBtnDisplay());
+//		Assert.assertTrue(loginPage.isLogoutBtnDisplay());
 	}
 }

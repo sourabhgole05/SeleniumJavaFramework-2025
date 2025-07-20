@@ -2,6 +2,7 @@ package base;
 
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -121,8 +122,8 @@ public class BaseTest_S {
         getWait().until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    public void waitForElementToBeVisible(org.openqa.selenium.By locator) {
-        getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+    public void waitForElementToBeVisible(WebElement locator) {
+        getWait().until(ExpectedConditions.visibilityOf(locator));
     }
 
     public void waitForUrlToContain(String urlFraction) {
