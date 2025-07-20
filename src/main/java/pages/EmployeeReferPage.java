@@ -26,12 +26,32 @@ public class EmployeeReferPage extends BaseTest_S {
 	@FindBy(xpath="//input[@id='idSIButton9']")
 	WebElement nextBtn;
 	
+	@FindBy(xpath="//div[@id='idDiv_SAOTCAS_Title']")
+	WebElement approveSingRequest; 
+	
+	@FindBy(xpath="//img[@role='presentation']")
+	WebElement accentureLogo;
+	
+	@FindBy(css = "[title='Global Navigation']")
+	WebElement globalNavigationMenu;
+	
+	@FindBy(css="[aria-label='Careers Marketplace']")
+	WebElement careersMarketplace;
+	
+	@FindBy(css="[aria-label='Search Jobs & Apply/Refer']")
+	WebElement searchJobsForRefer;
+	
+	@FindBy(css="[placeholder='search']")
+	WebElement searchBox;
+	
+	@FindBy(xpath="//span[@title='Search']")
+	WebElement searchBtn;
+	
 	public EmployeeReferPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
-
 	public void loginRefUrl() {
 		driver.get(url);
 	}
@@ -46,12 +66,41 @@ public class EmployeeReferPage extends BaseTest_S {
 		password.sendKeys(pwsd);
 	}
 	
-	
-	
-
-
 	public void clickNextBtn() {
 		nextBtn.click();
 	}
+	
+	public void approveSingRequestAccept() {
+		waitForElementToBeVisible(approveSingRequest);
+	}
+	
+	public void accentureLogo() {
+		 waitForElementToBeVisible(accentureLogo);
+		accentureLogo.isDisplayed();
+	}
+	
+	public void clickToMenu() {
+		waitForElementToBeClickable(globalNavigationMenu);
+		globalNavigationMenu.click();
+	}
+	
+	public void goToCareerMarketplace() {
+		waitForElementToBeClickable(careersMarketplace);
+		careersMarketplace.click();
+	}
+	
+	public void goToSearchJobsForRefer() {
+		waitForElementToBeClickable(searchJobsForRefer);
+		searchJobsForRefer.click();
+	}
+	
+	public void searchJobIDforRefer(String jobID) {
+		waitForElementToBeClickable(searchBox);
+		searchBox.sendKeys(jobID);
+		searchBtn.click();
+	}
+	
+	
+	
 	
 }

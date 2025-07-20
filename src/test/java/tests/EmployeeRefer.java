@@ -15,6 +15,7 @@ public class EmployeeRefer extends BaseTest_S {
 		EmployeeReferPage empRef = new EmployeeReferPage(driver);
 		
 		String password =  "Poojasg@1994";
+		String jobID = "ATCI-4918797-S1863298";	
 		
 		test = extent.createTest("Test Successful Login", "Employee Referral Test Starting...!");
 		
@@ -23,12 +24,24 @@ public class EmployeeRefer extends BaseTest_S {
 		empRef.enterEmail();
 		
 		empRef.clickNextBtn();
-		
 				
 		empRef.enterPassword(password);
 		
 		empRef.clickNextBtn();
 		
+		empRef.approveSingRequestAccept();
+		
+		empRef.accentureLogo();
+		
+		empRef.clickToMenu();
+		
+		empRef.goToCareerMarketplace();
+		
+		empRef.goToSearchJobsForRefer();
+		
+		empRef.searchJobIDforRefer(jobID);
+		
+		captureScreenshot("Find Job ID");
 	}
 	
 	

@@ -1,6 +1,10 @@
 package base;
 
 import java.time.Duration;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -39,8 +43,6 @@ public class BaseTest_S {
     private static final Duration EXPLICIT_WAIT_TIMEOUT = Duration.ofSeconds(15);
     private static final Duration EXPLICIT_POLLING_INTERVAL = Duration.ofMillis(500);
     
-    // Default browser if not specified
-    private static final String DEFAULT_BROWSER = "chrome";
     
     @BeforeSuite
     public void setupSuite() {
@@ -54,6 +56,9 @@ public class BaseTest_S {
         }
     }
  
+    // Default browser if not specified
+    private static final String DEFAULT_BROWSER = "chrome";
+    
     @Parameters("browser")
     @BeforeMethod
     public void setup(@Optional("chrome") String browser) {  // Add @Optional with default value
@@ -80,6 +85,19 @@ public class BaseTest_S {
                 options.addArguments("--start-maximized");
                 options.addArguments("--remote-allow-origins=*");
                 options.addArguments("--disable-notifications");
+                options.addArguments("--incognito");
+                
+             // 🔒 Disable password manager & automation banners
+                Map<String, Object> prefs = new HashMap<>();
+                prefs.put("credentials_enable_service", false); // disable Chrome Credential Service
+                prefs.put("profile.password_manager_enabled", false); // disable password manager
+                prefs.put("profile.default_content_setting_values.notifications", 2); // block notifications
+
+                options.setExperimentalOption("prefs", prefs);
+                options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation")); // hide "Chrome is being controlled..."
+                options.setExperimentalOption("useAutomationExtension", false); // turn off automation extension
+
+                
                 driver = new ChromeDriver(options);
                 break;
             case "firefox":
@@ -118,7 +136,7 @@ public class BaseTest_S {
     }
 
     // Common explicit wait conditions
-    public void waitForElementToBeClickable(org.openqa.selenium.By locator) {
+    public void waitForElementToBeClickable(WebElement locator) {
         getWait().until(ExpectedConditions.elementToBeClickable(locator));
     }
 
