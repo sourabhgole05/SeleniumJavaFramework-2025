@@ -4,7 +4,9 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -40,7 +42,7 @@ public class BaseTest_S {
     // Timeout configurations
     private static final Duration IMPLICIT_WAIT = Duration.ofSeconds(10);
     private static final Duration PAGE_LOAD_TIMEOUT = Duration.ofSeconds(30);
-    private static final Duration EXPLICIT_WAIT_TIMEOUT = Duration.ofSeconds(15);
+    private static final Duration EXPLICIT_WAIT_TIMEOUT = Duration.ofSeconds(30);
     private static final Duration EXPLICIT_POLLING_INTERVAL = Duration.ofMillis(500);
     
     
@@ -148,14 +150,16 @@ public class BaseTest_S {
         getWait().until(ExpectedConditions.urlContains(urlFraction));
     }
 
-    public boolean isElementPresent(org.openqa.selenium.By locator) {
+    public boolean isElementPresent(WebElement locator) {
         try {
-            getWait().until(ExpectedConditions.presenceOfElementLocated(locator));
+            getWait().until(ExpectedConditions.visibilityOf(locator));
             return true;
-        } catch (Exception e) {
+        } catch ( NoSuchElementException | StaleElementReferenceException e) {
             return false;
         }
     }
+    
+   
 
 
     @AfterMethod
